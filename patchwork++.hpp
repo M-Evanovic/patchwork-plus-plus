@@ -1,13 +1,3 @@
-/**
- * @file patchworkpp.hpp
- * @author Seungjae Lee
- * @brief
- * @version 0.1
- * @date 2022-07-20
- *
- * @copyright Copyright (c) 2022
- *
- */
 #ifndef PATCHWORKPP_H
 #define PATCHWORKPP_H
 
