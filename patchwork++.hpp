@@ -1,3 +1,13 @@
+/**
+ * @file patchworkpp.hpp
+ * @author Seungjae Lee
+ * @brief
+ * @version 0.1
+ * @date 2022-07-20
+ *
+ * @copyright Copyright (c) 2022
+ *
+ */
 #ifndef PATCHWORKPP_H
 #define PATCHWORKPP_H
 
@@ -104,7 +114,6 @@ public:
 
     PatchWorkpp(Options option = Options()) : option_(option)
     {
-
         // init params
         Initialization();
     }   
@@ -153,7 +162,8 @@ public:
     }
 
     void EstimateGround(pcl::PointCloud<PointT> cloud_in,
-                        pcl::PointCloud<PointT> &cloud_ground, pcl::PointCloud<PointT> &cloud_nonground, Eigen::VectorXf &ground_normal);
+                        pcl::PointCloud<PointT> &cloud_ground,
+                        pcl::PointCloud<PointT> &cloud_nonground);
 
 private:
     // Every private member variable is written with the undescore("_") in its end.
@@ -276,6 +286,14 @@ private:
     Eigen::VectorXf FitRansacGroundPlane(pcl::PointCloud<PointT> &cloud);
 
 };
+
+
+
+
+
+
+
+
 
 template <typename PointT>
 inline void PatchWorkpp<PointT>::InitializeZone(Zone &z, int num_sectors, int num_rings)
@@ -479,7 +497,7 @@ template <typename PointT>
 inline void PatchWorkpp<PointT>::EstimateGround(
     pcl::PointCloud<PointT> cloud_in,
     pcl::PointCloud<PointT> &cloud_ground,
-    pcl::PointCloud<PointT> &cloud_nonground, Eigen::VectorXf &ground_normal)
+    pcl::PointCloud<PointT> &cloud_nonground)
 {
 
     std::unique_lock<std::recursive_mutex> lock(mutex_);
@@ -635,20 +653,6 @@ inline void PatchWorkpp<PointT>::EstimateGround(
 
     UpdateElevationThr();
     UpdateFlatnessThr();
-
-
-    // TODO 平面拟合
-    
-    if (normals.size() < 5) {
-         // auto aaa = RemoveDifferentPlanes(normals);
-        ground_normal = FitGroundPlane(normals);
-    } else {
-        ground_normal = FitRansacGroundPlane(cloud_ground);
-    }
-   
-    
-
-    // std::cout << normals.size() << std::endl;
 
     revert_pc_.clear();
     reject_pc_.clear();
