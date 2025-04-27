@@ -162,8 +162,8 @@ public:
     }
 
     void EstimateGround(pcl::PointCloud<PointT> cloud_in,
-                        pcl::PointCloud<PointT> &cloud_ground,
-                        pcl::PointCloud<PointT> &cloud_nonground);
+                        pcl::PointCloud<PointT> &cloud_ground, pcl::PointCloud<PointT> &cloud_nonground
+                        /*, Eigen::VectorXf &ground_normal*/);
 
 private:
     // Every private member variable is written with the undescore("_") in its end.
@@ -497,7 +497,8 @@ template <typename PointT>
 inline void PatchWorkpp<PointT>::EstimateGround(
     pcl::PointCloud<PointT> cloud_in,
     pcl::PointCloud<PointT> &cloud_ground,
-    pcl::PointCloud<PointT> &cloud_nonground)
+    pcl::PointCloud<PointT> &cloud_nonground
+    /*, Eigen::VectorXf &ground_normal*/)
 {
 
     std::unique_lock<std::recursive_mutex> lock(mutex_);
@@ -653,6 +654,20 @@ inline void PatchWorkpp<PointT>::EstimateGround(
 
     UpdateElevationThr();
     UpdateFlatnessThr();
+
+
+    // TODO 平面拟合
+    
+    // if (normals.size() < 5) {
+    //      // auto aaa = RemoveDifferentPlanes(normals);
+    //     ground_normal = FitGroundPlane(normals);
+    // } else {
+    //     ground_normal = FitRansacGroundPlane(cloud_ground);
+    // }
+   
+    
+
+    // std::cout << normals.size() << std::endl;
 
     revert_pc_.clear();
     reject_pc_.clear();
