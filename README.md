@@ -4,7 +4,7 @@ Seperate ground points and non-ground points
 ## Usage
 ```
 // void EstimateGround(pcl::PointCloud<PointT> cloud_in, pcl::PointCloud<PointT> &cloud_ground, pcl::PointCloud<PointT> &cloud_nonground);
-std::shared_ptr<GroundSeperator> ground_seperator = nullptr;
+std::shared_ptr<GroundSeperator<PointType>> ground_seperator = nullptr;
 ground_seperator->EstimateGround(src_pc, ground_pc, non_ground_pc);
 ```
 
