@@ -1,13 +1,3 @@
-/**
- * @file patchworkpp.hpp
- * @author Seungjae Lee
- * @brief
- * @version 0.1
- * @date 2022-07-20
- *
- * @copyright Copyright (c) 2022
- *
- */
 #ifndef PATCHWORKPP_H
 #define PATCHWORKPP_H
 
@@ -44,6 +34,7 @@
 
 #define NUM_HEURISTIC_MAX_PTS_IN_PATCH 3000
 
+namespace gs{
 
 template <typename PointT>
 struct RevertCandidate
@@ -1127,5 +1118,7 @@ inline void PatchWorkpp<PointT>::PC2CZM(const pcl::PointCloud<PointT> &src, std:
     }   
         
 }
+
+}    // namespace gs
 
 #endif
