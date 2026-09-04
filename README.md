@@ -16,5 +16,5 @@ ground_seperator->EstimateGround(src_pc, ground_pc, non_ground_pc);
 
 ## Reference
 patchwork-plus-plus  
-[code]([https://github.com/gisbi-kim/removert.git](https://github.com/url-kaist/patchwork-plusplus))  
-[paper]([https://arxiv.org/abs/2207.11919](https://arxiv.org/abs/2207.11919))
+[code](https://github.com/url-kaist/patchwork-plusplus)  
+[paper](https://arxiv.org/abs/2207.11919)
